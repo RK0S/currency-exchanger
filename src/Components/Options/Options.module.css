@@ -1,0 +1,36 @@
+.options__wrapper {
+    display: flex;
+}
+
+.option {
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+    border-color: #020202;
+    width: 80px;
+    height: 40px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #020202;
+    padding: 9px 19px;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.option:first-child {
+    border-radius: 13px 0px 0px 13px;
+    border-width: 1px 1px 1px 1px;
+}
+
+.option:last-child {
+    border-radius: 0px 13px 13px 0px;
+    padding: 10px;
+}
+
+.option:hover {
+    background: rgba(210, 255, 218, 0.38);
+}
+
+.active {
+    background: rgb(210, 255, 218);
+}

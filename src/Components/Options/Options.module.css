@@ -1,5 +1,6 @@
 .options__wrapper {
     display: flex;
+    margin-bottom: 40px;
 }
 
 .option {
@@ -14,7 +15,7 @@
     padding: 9px 19px;
     background: white;
     cursor: pointer;
-    transition: 0.3s all ease;
+    transition: 0.2s all ease;
 }
 
 .option:first-child {
@@ -32,5 +33,9 @@
 }
 
 .active {
-    background: rgb(210, 255, 218);
+    background: rgb(194, 255, 205);
+}
+
+.active:hover {
+    background: rgb(194, 255, 205);
 }

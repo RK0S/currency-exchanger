@@ -1,13 +1,14 @@
 import React from 'react';
 import cl from './Options.module.css';
 
-const Options = ({ defaultCurrencies, currentCurrency }) => {
+const Options = ({ defaultCurrencies, currency, setCurrency }) => {
     return (
         <ul className={cl.options__wrapper}>
             {defaultCurrencies.map((cur) => (
                 <li 
+                    onClick={() => setCurrency(cur)}
                     key={cur} 
-                    className={currentCurrency === cur ? [cl.option, cl.active].join(' ') : cl.option}
+                    className={currency === cur ? [cl.option, cl.active].join(' ') : cl.option}
                 >
                     {cur}
                 </li>

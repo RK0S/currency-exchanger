@@ -5,6 +5,7 @@ import Block from './Components/Block/Block';
 import LastUpdate from './Components/LastUpdate/LastUpdate';
 import { useRates } from './API/CurrencyService';
 import { rounding } from './functions/rounding';
+import Transfer from './Components/Transfer/Transfer';
 
 function App() {
     const [leftCurrency, setLeftCurrency] = useState('RUB');
@@ -59,6 +60,20 @@ function App() {
                     active={leftActive}
                     lastCurrency={leftLastCurrency}
                     setLastCurrency={setLeftLastCurrency}
+                />
+                <Transfer 
+                    rightCurrency={rightCurrency}
+                    setRightCurrency={setRightCurrency}
+                    leftCurrency={leftCurrency}
+                    setLeftCurrency={setLeftCurrency}
+                    leftValue={leftValue}
+                    changeLeftValue={changeLeftValue}
+                    rightValue={rightValue}
+                    changeRightValue={changeRightValue}
+                    leftLastCurrency={leftLastCurrency}
+                    setLeftLastCurrency={setLeftLastCurrency} 
+                    rightLastCurrency={rightLastCurrency}
+                    setRightLastCurrency={setRightLastCurrency} 
                 />
                 <Block
                     currency={rightCurrency}

@@ -1,4 +1,3 @@
-import React from 'react';
 import cl from './Options.module.css';
 
 const Options = ({

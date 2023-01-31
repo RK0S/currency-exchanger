@@ -40,7 +40,7 @@ const Currencies = ({ setActive, active, setCurrency, setLastCurrency }) => {
                                 key={cur[0]}
                                 onClick={(e) => changeCurrency(e)}
                             >
-                                <span className={cl.charcode}>{cur[0]} </span>{cur[1]['Name']}
+                                <span className={cl.charcode}>{cur[0]}</span> {cur[1]['Name']}
                             </li>
                         )
                     )

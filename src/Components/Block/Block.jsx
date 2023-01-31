@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../Input/Input';
 import Options from '../Options/Options';
+import Tip from '../Tip/Tip';
 import Currencies from './../Currencies/Currencies';
 
 const Block = ({
@@ -32,6 +33,7 @@ const Block = ({
                 setCurrency={setCurrency}
                 setLastCurrency={setLastCurrency}
             />
+            <Tip currency={currency}/>
         </div>
     );
 };

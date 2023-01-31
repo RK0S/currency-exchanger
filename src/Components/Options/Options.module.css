@@ -32,7 +32,8 @@
     background: rgba(210, 255, 218, 0.38);
 }
 
-.active, .active:hover {
+.active,
+.active:hover {
     background: rgb(194, 255, 205);
 }
 

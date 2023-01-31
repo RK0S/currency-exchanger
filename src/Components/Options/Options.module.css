@@ -32,10 +32,10 @@
     background: rgba(210, 255, 218, 0.38);
 }
 
-.active {
+.active, .active:hover {
     background: rgb(194, 255, 205);
 }
 
-.active:hover {
-    background: rgb(194, 255, 205);
+.rotate {
+    transform: rotate(180deg);
 }

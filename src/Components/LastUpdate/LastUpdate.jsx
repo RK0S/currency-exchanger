@@ -1,16 +1,15 @@
-import axios from 'axios';
 import { useRef } from 'react';
+import { useDate } from '../../API/CurrencyService';
+
+import cl from './LasUpdate.module.css'
 
 const LastUpdate = () => {
     const dateRef = useRef(null)
-
-    axios
-        .get('https://www.cbr-xml-daily.ru/latest.js')
-        .then((res) => {dateRef.current = res.data.date})
+    useDate(dateRef)
 
     return (
         <div>
-            <p>Последнее обновление: {dateRef.current ? dateRef.current : '...'}</p>
+            <p className={cl.lastUpdate}>Последнее обновление: {dateRef.current ? dateRef.current : '...'}</p>
         </div>
     );
 };

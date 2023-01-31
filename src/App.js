@@ -1,47 +1,37 @@
-import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 
 import './styles/App.css';
 import Block from './Components/Block/Block';
 import LastUpdate from './Components/LastUpdate/LastUpdate';
+import { useRates } from './API/CurrencyService';
+import { rounding } from './functions/rounding';
 
 function App() {
     const [leftCurrency, setLeftCurrency] = useState('RUB');
     const [rightCurrency, setRightCurrency] = useState('USD');
+    const [leftLastCurrency, setLeftLastCurrency] = useState('UAH');
+    const [rightLastCurrency, setRightLastCurrency] = useState('UAH');
     const [leftValue, setLeftValue] = useState(0);
     const [rightValue, setRightValue] = useState(1);
 
+    const [leftActive, setLeftActive] = useState(false);
+    const [rightActive, setRightActive] = useState(false);
+
     const ratesRef = useRef(null)
 
-    useEffect(() => {
-        axios
-            .get('https://www.cbr-xml-daily.ru/latest.js')
-            .then((res) => Object.entries(res.data.rates))
-            .then((res) => {
-                ratesRef.current = Object.fromEntries([...res, ['RUB', 1]])
-                changeRightValue(1)
-            });
-    }, []);
+    useRates(ratesRef, changeRightValue)
 
-    function rounding(num) {
-        const count = (num.toString().includes('.') ? (num.toString().split('.').pop().length) : (0))
-        if (count > 3) {
-            return Number(num.toFixed(3));
-        }
-        return num;
-    }
-
-    function changeLeftValue(value) {
-        const price = value / ratesRef.current[leftCurrency];
-        const result = price * ratesRef.current[rightCurrency];
-        setLeftValue(rounding(value));
+    const changeLeftValue = (value) => {
+        const price = value / (ratesRef.current[rightCurrency].Value / ratesRef.current[rightCurrency].Nominal);
+        const result = price * (ratesRef.current[leftCurrency].Value / ratesRef.current[leftCurrency].Nominal);
+        setLeftValue(Math.abs(value));
         setRightValue(rounding(result));
     }
 
     function changeRightValue(value) {
-        const result = (ratesRef.current[leftCurrency] / ratesRef.current[rightCurrency]) * value;
+        const result = ((ratesRef.current[rightCurrency].Value / ratesRef.current[rightCurrency].Nominal) / (ratesRef.current[leftCurrency].Value / ratesRef.current[leftCurrency].Nominal)) * value;
         setLeftValue(rounding(result));
-        setRightValue(rounding(value));
+        setRightValue(Math.abs(value));
     }
 
     useEffect(() => {
@@ -52,7 +42,7 @@ function App() {
 
     useEffect(() => {
         if (ratesRef.current) {
-            changeRightValue(rightValue)
+            changeLeftValue(leftValue)
         }
     }, [rightCurrency])
 
@@ -65,12 +55,20 @@ function App() {
                     setCurrency={setLeftCurrency}
                     value={leftValue}
                     setValue={changeLeftValue}
+                    setActive={setLeftActive}
+                    active={leftActive}
+                    lastCurrency={leftLastCurrency}
+                    setLastCurrency={setLeftLastCurrency}
                 />
                 <Block
                     currency={rightCurrency}
                     setCurrency={setRightCurrency}
                     value={rightValue}
                     setValue={changeRightValue}
+                    setActive={setRightActive}
+                    active={rightActive}
+                    lastCurrency={rightLastCurrency}
+                    setLastCurrency={setRightLastCurrency}
                 />
             </div>
             <LastUpdate />

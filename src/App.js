@@ -25,14 +25,14 @@ function App() {
     const changeLeftValue = (value) => {
         const price = value / (ratesRef.current[rightCurrency].Value / ratesRef.current[rightCurrency].Nominal);
         const result = price * (ratesRef.current[leftCurrency].Value / ratesRef.current[leftCurrency].Nominal);
-        setLeftValue(Math.abs(value));
+        setLeftValue(Math.abs(value).toString());
         setRightValue(rounding(result));
     }
 
     function changeRightValue(value) {
         const result = ((ratesRef.current[rightCurrency].Value / ratesRef.current[rightCurrency].Nominal) / (ratesRef.current[leftCurrency].Value / ratesRef.current[leftCurrency].Nominal)) * value;
         setLeftValue(rounding(result));
-        setRightValue(Math.abs(value));
+        setRightValue(Math.abs(value).toString());
     }
 
     useEffect(() => {

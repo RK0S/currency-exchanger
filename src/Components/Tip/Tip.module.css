@@ -4,3 +4,11 @@
     color: rgba(2, 2, 2, 0.56);
     padding-left: 21px;
 }
+
+@media (max-width: 1024px) {
+    .tip {
+        font-size: 13px;
+        padding-left: 0;
+        text-align: center;
+    }
+}

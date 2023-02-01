@@ -4,6 +4,8 @@ import Options from '../Options/Options';
 import Tip from '../Tip/Tip';
 import Currencies from './../Currencies/Currencies';
 
+import cl from './Block.module.css';
+
 const Block = ({
     currency,
     setCurrency,
@@ -17,7 +19,7 @@ const Block = ({
     const defaultCurrencies = ['RUB', 'USD', 'EUR'];
 
     return (
-        <div>
+        <div className={cl.block} >
             <Options
                 defaultCurrencies={defaultCurrencies}
                 currency={currency}

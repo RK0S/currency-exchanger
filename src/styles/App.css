@@ -16,3 +16,30 @@
     padding: 50px 55px;
     margin-bottom: 30px;
 }
+
+@media (max-width: 1024px) {
+    .base {
+        flex-direction: column;
+        width: 700px;
+        height: 550px;
+        align-items: center;
+        padding: 30px
+    }
+}
+
+@media (max-width: 768px) {
+    .base {
+        width: 450px;
+    }
+}
+
+@media (max-width: 480px) {
+    .App {
+        padding-top: 50px;
+    }
+    
+    .base {
+        width: 320px;
+        padding: 25px;
+    }
+}

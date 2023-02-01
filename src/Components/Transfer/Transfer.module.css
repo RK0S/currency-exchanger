@@ -5,3 +5,11 @@
     background: url('/src/img/transfer.svg');
     cursor: pointer;
 }
+
+@media (max-width: 1024px) {
+    .transfer {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        transform: rotate(90deg);
+    }
+}

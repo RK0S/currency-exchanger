@@ -10,3 +10,9 @@
     color: #020202;
     padding: 21px;
 }
+
+@media (max-width: 480px) {
+    .input {
+        width: 275px;
+    }
+}
